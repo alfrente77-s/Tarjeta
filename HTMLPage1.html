@@ -26,10 +26,10 @@
         }
 
         .card {
-            width: 90vw; /* ocupa el 90% del ancho de la pantalla */
-            height: 90vh; /* ocupa el 90% del alto de la pantalla */
-            max-width: 600px; /* límite máximo en pantallas grandes */
-            max-height: 800px; /* límite máximo en pantallas grandes */
+            width: 90vw;
+            height: 90vh;
+            max-width: 600px;
+            max-height: 800px;
             position: relative;
             transform-style: preserve-3d;
             transition: transform 0.8s;
@@ -53,27 +53,58 @@
         }
 
         .front {
-            background-image: url('Frontal.png'); /* Reemplaza con tu imagen delantera */
+            background-image: url('Frontal.png');
         }
 
         .back {
-            background-image: url('Reversa.png'); /* Reemplaza con tu imagen trasera */
+            background-image: url('Reversa.png');
             transform: rotateY(180deg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        /* Media queries para ajustar en móviles */
+        /* Texto animado en el reverso */
+        .mensaje {
+            font-size: 2em;
+            color: #fff;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+            opacity: 0;
+            animation: aparecer 3s forwards;
+        }
+
+        @keyframes aparecer {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Ajustes para móviles */
         @media (max-width: 768px) {
             .card {
-                width: 100vw; /* ocupa todo el ancho en móvil */
-                height: 100vh; /* ocupa todo el alto en móvil */
+                width: 100vw;
+                height: 100vh;
                 max-width: none;
                 max-height: none;
-                border-radius: 0; /* sin bordes redondeados para pantalla completa */
+                border-radius: 0;
             }
 
             .card-face {
                 border-radius: 0;
                 box-shadow: none;
+                background-size: cover; /* en móvil usamos cover para llenar toda la pantalla */
+            }
+
+            .mensaje {
+                font-size: 1.5em;
+                padding: 10px;
+                text-align: center;
             }
         }
     </style>
@@ -82,7 +113,9 @@
     <div class="card-container">
         <div class="card" id="tarjeta">
             <div class="card-face front"></div>
-            <div class="card-face back"></div>
+            <div class="card-face back">
+                <div class="mensaje">💖 La amo, Samanta 💖</div>
+            </div>
         </div>
     </div>
 
