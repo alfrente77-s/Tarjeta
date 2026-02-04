@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Tarjeta para Samanta</title>
+    <style>
+        body {
+            background-color: #fce4ec;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .card-container {
+            perspective: 1000px;
+        }
+
+        .card {
+            width: 320px;
+            height: 480px;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.8s;
+            cursor: pointer;
+        }
+
+            .card.flipped {
+                transform: rotateY(180deg);
+            }
+
+        .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+        }
+
+        .front {
+            background-image: url('Frontal.png'); /* Reemplaza con tu imagen delantera */
+            background-size: cover;
+            background-position: center;
+        }
+
+        .back {
+            background-image: url('Reversa.png'); /* Reemplaza con tu imagen trasera */
+            background-size: cover;
+            background-position: center;
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="card-container">
+        <div class="card" id="tarjeta">
+            <div class="card-face front"></div>
+            <div class="card-face back"></div>
+        </div>
+    </div>
+
+    <script>const tarjeta = document.getElementById('tarjeta');
+    tarjeta.addEventListener('click', () => {
+      tarjeta.classList.toggle('flipped');
+    });</script>
+</body>
+</html>
